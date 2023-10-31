@@ -11,7 +11,6 @@
 	-webkit-box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, 0.75);
 	-mox-box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
-  position: relative;
 }
 
 .photo {
@@ -20,10 +19,16 @@
   border-radius: 100%;
 }
 
+.avartar {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
 .new {
   width: 50px;
   height: 50px;
   line-height: 50px;
+  text-align: center;
   border-radius: 100%;
   background-color: mediumspringgreen;
   color: white;
