@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import AppProducts_practice from "./AppProducts_practice";
+import AppXY from "./AppXY";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppProducts_practice />
+    <AppXY />
   </React.StrictMode>
 );
 
