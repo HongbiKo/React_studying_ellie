@@ -1,44 +1,27 @@
-import React , { useState } from 'react';
+import React , { useReducer } from 'react';
+import personReducer_practice from './reducer/personReduce_practice';
 
 export default function Practice (){
-  const [person, setPerson] = useState({
-    name: '엘리',
-    title: '개발자',
-    mentors: [
-      {
-        name: '밥',
-        title: '시니어 개발자'
-      },
-      {
-        name: '제임스',
-        title: '시니어 개발자'
-      }
-    ]
-  });
+  const [person, dispatch] = useReducer(personReducer_practice, initialPerson);
 
   const handleUpdate = () => {
     const current = prompt(`누구의 이름을 바꾸고 싶나요?`);
     const name = prompt(`뭐라고 바꾸고 싶나요?`);
 
-    setPerson((prev) => ({...prev, mentors : prev.mentors.map((mentor) => {
-      if(mentor.name === current) {
-        return {...mentor, name: name}
-      }
-      return mentor
-    })}))
+    dispatch({type: 'updated', current, name});
   }
 
   const handleAdd = () => {
     const name = prompt(`누구의 이름을 추가하고 싶나요?`);
     const title = prompt(`직책은 무엇인가요?`);
     
-    setPerson((prev) => ({...prev, mentors: [...prev.mentors, {name, title}]}))
+    dispatch({type:'added', name, title})
   }
 
   const handleDelete = () => {
     const name = prompt(`누구의 이름을 삭제하고 싶나요?`);
 
-    setPerson((prev) => ({...prev, mentors: prev.mentors.filter((mentor)=>(mentor.name !== name))}))
+    dispatch({type:'deleted', name})
   }
 
   return(
@@ -55,4 +38,19 @@ export default function Practice (){
       <button onClick={handleDelete}>멘토 삭제하기</button>
     </div>
   );
+}
+
+const initialPerson =  {
+  name: '엘리',
+    title: '개발자',
+    mentors: [
+      {
+        name: '밥',
+        title: '시니어 개발자'
+      },
+      {
+        name: '제임스',
+        title: '시니어 개발자'
+      }
+    ]
 }
