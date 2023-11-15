@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import AppMentors from "./AppMentors";
+// import AppMentors from "./AppMentors";
+import Practice from "./Practice";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppMentors />
+    <Practice />
   </React.StrictMode>
 );
 
