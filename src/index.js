@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 // import AppMentors from "./AppMentors";
-import Practice from "./Practice";
-
+// import Practice from "./Practice";
+import AppForm from "./AppForm";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Practice />
+    <AppForm />
   </React.StrictMode>
 );
 
