@@ -1,25 +1,26 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useMemo, useCallback, memo } from 'react';
 import personReducer from './reducer/personReducer';
 
-export default function AppMentrosButton() {
+export default function AppMentorsButton() {
   const [person, dispatch] = useReducer(personReducer, initialPerson);
 
-  const handleUpdate = () => {
+  const handleUpdate =  useCallback
+  (() => {
     const prev = prompt(`누구의 이름을 바꾸고 싶은가요?`);
     const current = prompt(`이름을 무엇으로 바꾸고 싶은가요?`);
     dispatch({ type: 'updated', prev, current});
-  }
+  }, []);
 
-  const handleAdd = () => {
+  const handleAdd = useCallback(() => {
     const name = prompt(`멘토의 이름은?`);
     const title = prompt(`멘토의 직함은?`);
     dispatch({ type: 'added', name, title });
-  }
+  }, []);
 
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     const name = prompt(`누구를 삭제하고 싶은가요?`);
     dispatch({ type: 'deleted', name });
-  }
+  },[]);
 
   return(
     <div>
@@ -41,11 +42,20 @@ export default function AppMentrosButton() {
   );
 }
 
-function Button( {text, onClick}) {
+const Button = memo(({text, onClick}) => {
   console.log('Button', text, 're-rending');
+  const result = useMemo(() => calculateSomething(), []);
   return(
-    <button onClick={onClick} style={{backgroundColor : 'black', color : 'white', borderRadius: '20px', margin: '0.4rem'}}>{text}</button>
+    <button onClick={onClick} style={{backgroundColor : 'black', color : 'white', borderRadius: '20px', margin: '0.4rem'}}>{`${text} ${result}`}</button>
   );
+
+});
+
+function calculateSomething() {
+  for(let i = 0; i < 10000; i++) {
+    console.log('😀');
+  }
+  return 10;
 }
 
 const initialPerson = {
